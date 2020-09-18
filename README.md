@@ -1,3 +1,3 @@
 Trabalho de ProgWeb 
 
-Grupo : Felipe Carnevale e Mateus Casagrande
+Grupo : Felipe Carnevale,Mateus Casagrande e Daniel Henry
