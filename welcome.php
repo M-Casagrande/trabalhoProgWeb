@@ -5,7 +5,7 @@
   </div>
   <?php
   $server = "localhost";
-  $username = "root";
+  $username = "teste";
   $password = "";
   $conn = new mysqli($server,$username,$password);
   if($conn->connect_error){
