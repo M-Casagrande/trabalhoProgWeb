@@ -6,7 +6,7 @@
   <?php
   $server = "localhost";
   $username = "teste";
-  $password = "";
+  $password = "teste";
   $conn = new mysqli($server,$username,$password);
   if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
