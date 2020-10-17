@@ -1,0 +1,41 @@
+<head>
+  <title>BFSQS</title>
+  <link rel="stylesheet" href="estilos.css">
+    <style>
+    .addUrlBox{
+      top: 10%;
+      left: 3%;
+      position: absolute;
+      width: 900;
+      height: 200;
+      text-align: left;
+      border: 3px solid black;
+      background-color:#f1f1f1;
+      border-radius: 10px;
+    }
+    .addUrl{
+       margin: 25px;
+     }
+}</style>
+</head>
+
+<body class="main-body">
+  <h1>BFSQS</h1>
+  <div class="addUrlBox"><br>Adicione uma Url:
+      <form class="addUrl" action="/addUrl" method="post">
+      <label for="titulo">Título da url(opcional):</label>
+      <br>
+      <input type="text" id="tituloUrl" name="tituloUrl" style="border:2px solid black;border-radius:5px" size="90">
+      <br>
+      <label for="ulr">Link da url:</label>
+      <br>
+      <input type="text" id="url" name="url" style="border:2px solid black;border-radius:5px" size="90">
+      <br>
+      <label for="Tags">Tags da Url (separador por ;):</label>
+      <br>
+      <input type="text" id="tags" name="tags" style="border:2px solid black;border-radius:5px" size="90">
+      <br>
+      <input type="submit" name="Addr" style="margin:10px" class="botao" ><br>
+  </form>
+  </div>
+</body>
