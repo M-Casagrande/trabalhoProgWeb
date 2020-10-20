@@ -15,7 +15,7 @@
             //testa para ver se esta vazia, ou seja, nao encontrou nenhuma ocorrencia
             if($novoTitulo->length == 0){
                 //coloca esse texto default caso nao tenha encontrado nada
-                $_POST["tituloUrl"] = "[..]";
+                $_POST["tituloUrl"] = "[blank]";
             }
             else{
                 //se econtrou alguma tag <h1> coloca a primeira ocorrencia no titulo
@@ -23,6 +23,12 @@
             }
         }
     }
+    
+    //se deixou as tags em branco coloca um marcador padrao
+    if($_POST["Tags"]==""){
+        $_POST["Tags"]= "[blank]";
+    }
+
     //cria um json com os dados do formulário
     $formulario = json_encode($_POST);
     //substituir o test.ext para um acesso ao servidor e salvar no usuario
