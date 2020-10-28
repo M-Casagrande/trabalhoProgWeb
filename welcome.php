@@ -5,13 +5,13 @@
   </div>
   <?php
   $server = "localhost";
-  $username = "teste";
-  $password = "teste";
+  $username = "root";
+  $password = "senhadodb";
   $conn = new mysqli($server,$username,$password);
   if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
   }
-  $conn -> select_db("loginProgweb");
+  $conn->select_db("loginProgweb");
 
   $nome = $_POST["user"];
   $senha = $_POST["senha"];
