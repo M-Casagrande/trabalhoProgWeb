@@ -6,14 +6,37 @@
 <body class="main-body">
   <div class="login-box">
     <h1>Welcome!</h1>
-    <form class="form-login" action="welcome.php" method="post">
-      <label for="user">Usuário</label><br>
-      <input type="text" id="user" name="user" style="border:2px solid black;border-radius:5px"><br>
-      <label for="senha">Senha</label><br>
-      <input type="password" name="senha" style="border:2px solid black;border-radius:5px"><br>
-      <input type="submit" name="entrar" class="botao" style="margin:10px" ><br>
+    <div>
+      <p style="margin-bottom:-30px"><span id="hint" style="color:red"></span></p>
+    </div>
+    <form class="form-login" onsubmit="showHint(user,senha);return false" method="post">
+    <label for="user">Usuário</label><br>
+    <input type="text" id="user" name="user" style="border:2px solid black;border-radius:5px"><br>
+    <label for="senha">Senha</label><br>
+    <input type="password" name="senha" style="border:2px solid black;border-radius:5px"><br>
+    <input type="submit" name="entrar" class="botao" style="margin:10px"><br>
     </form>
     <h5>Ainda não é inscrito ?  <button type="button" name="button" class="botao" onclick="location.href='registro.html'">Registrar</button></h3>
-
-</div>
+  </div>
+  <script>
+    function showHint(user,senha){
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var str = xmlhttp.responseText
+          if(str == "Usuario ou senha invalidos"){
+            document.getElementById("hint").innerHTML = this.responseText;
+          }else{
+            window.location.href="mainpage.html"
+          }
+        }
+      };
+      var params = "user="+user.value+"&senha="+senha.value;
+      xmlhttp.open("POST", "welcome.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.setRequestHeader("Content-length", params.length);
+      xmlhttp.setRequestHeader("Connection", "close");
+      xmlhttp.send(params);
+    }
+  </script>
 </body>

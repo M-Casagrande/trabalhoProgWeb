@@ -1,9 +1,4 @@
-<html>
-<body>
-  <div >
-    <h1><b>Pagina para teste da configuração do servidor php</b></h1>
-  </div>
-  <?php
+<?php
   $server = "localhost";
   $username = "root";
   $password = "senhadodb";
@@ -19,9 +14,13 @@
   $resultado = $conn->query($sql);
   if($resultado->num_rows > 0){
     echo "Usuario logado com sucesso";
+    
   }
   else{
+
+
     echo "Usuario ou senha invalidos";
+
+
   }
   ?>
-</body>
