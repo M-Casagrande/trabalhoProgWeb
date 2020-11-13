@@ -26,7 +26,21 @@
 </head>
 
 <body class="main-body">
-  <h1>BFSQS</h1>
+  <h1>BFSQS - logado como :<?php
+      session_start();
+      echo $_SESSION["user"];
+    ?>
+  </h1>
+
+  <form method="post" >
+    <input type="submit" name = "botaoSaida" class = "botao" value = "Sair">
+  </form>
+  <?php if(isset($_POST['botaoSaida'])){
+          session_unset();
+          session_destroy();
+          header("Location: index.html");
+        }
+  ?>
   <div class="addUrlBox"><br>Adicione uma Url:
       <form class="addUrl" action="addUrl.php" method="post">
       <label for="titulo">Título da url(opcional):</label>

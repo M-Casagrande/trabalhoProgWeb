@@ -13,8 +13,11 @@
   $sql = "select * from users where usuario = " . "'" . $nome . "'" ." and senha = ". "'" . $senha . "'";
   $resultado = $conn->query($sql);
   if($resultado->num_rows > 0){
+    session_start();
+    $_SESSION["user"] = $nome ; 
     echo "Usuario logado com sucesso";
-    
+
+
   }
   else{
 
