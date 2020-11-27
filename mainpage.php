@@ -26,9 +26,15 @@
 </head>
 
 <body class="main-body">
-  <h1>BFSQS - logado como :<?php
+  <h1>BFSQS - logado como : <?php
       session_start();
-      echo $_SESSION["user"];
+      if($_SESSION["user"]!=""){
+        echo $_SESSION["user"];
+      }
+      else{
+        header("Location: index.html");
+      }
+
     ?>
   </h1>
 
