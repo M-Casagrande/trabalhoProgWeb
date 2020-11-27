@@ -5,7 +5,7 @@ $email = $_POST["email"];
 $usuario = $_POST["user"];
 
 if($senha != $confirmaSenha){
-  echo "<h2>As senhas digitadas não são iguais</h2>";
+  echo "As senhas digitadas não são iguais";
 }
 else{
   if($usuario != "" and $email != "" and $senha!=""){
@@ -26,7 +26,7 @@ else{
     }
   }
   else{
-    echo "<h2>Informacões necessárias para o cadastro não foram digitadas</h2>";
+    echo "Informacões necessárias para o cadastro não foram digitadas";
   }
 }
 ?>

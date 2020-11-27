@@ -6,17 +6,54 @@
 <body class="main-body">
   <div class="login-box">
     <h1><b>Cadastro</b></h1>
-    <form class="form-login" action="processa-cadastro.php" method="post">
+    <div>
+      <p style="margin-bottom:-30px"><span id="hint" style="color:red"></span></p>
+    </div>
+
+    <form class="form-login" onsubmit="showHint(user,email,senha,confirmasenha);return false" method="post">
       <label for="user">Usuário</label><br>
       <input type="text" id="user" name="user" style="border:2px solid black;border-radius:5px"><br>
       <label for="email">Email</label><br>
       <input type="text" id="email" name="email" style="border:2px solid black;border-radius:5px"><br>
       <label for="senha">Senha</label><br>
       <input type="password" name="senha" style="border:2px solid black;border-radius:5px"><br>
-      <label for="confirma-senha">Confirma Senha</label><br>
-      <input type="password" name="confirma-senha" style="border:2px solid black;border-radius:5px"><br>
+      <label for="confirmasenha">Confirma Senha</label><br>
+      <input type="password" id = "confirma_senha" name="confirmasenha" onkeyup="confirmaSenha(senha)" style="border:2px solid black;border-radius:5px"><br>
       <input type="button" value="Voltar" onClick="history.go(-1)" class="botao">
       <input type="submit" name="entrar" style="margin:10px" class="botao"><br>
     </form>
 </div>
+<script>
+  function confirmaSenha(senha){
+    var x = document.getElementById("confirma_senha");
+    console.log(x.value);
+    if(senha.value!=x.value){
+      document.getElementById("hint").innerHTML = "As senhas não são iguais!";lolca
+    }
+    else{
+      document.getElementById("hint").innerHTML = "";
+    }
+  }
+  function showHint(user,email,senha,confirma_senha){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var str = xmlhttp.responseText
+        if(str == "Informacões necessárias para o cadastro não foram digitadas"){
+          document.getElementById("hint").innerHTML = "campos necessários estão em branco";
+        }else if(str == "New record created successfully"){
+          window.location.href="mainpage.php";
+        }else{
+          alert("ERRO!");
+        }
+      }
+    };
+    var params = "user="+user.value+"&email="+email.value+"&senha="+senha.value+"&confirma-senha="+confirma_senha.value;
+    xmlhttp.open("POST", "processa-cadastro.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("Content-length", params.length);
+    xmlhttp.setRequestHeader("Connection", "close");
+    xmlhttp.send(params);
+  }
+</script>
 </body>
