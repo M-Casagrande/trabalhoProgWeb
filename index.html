@@ -16,16 +16,59 @@
       border-radius: 10px;
       background-color:#f1f1f1;
     }
+    table, th, td {
+   border: 1px solid black;
+ }
   </style>
 </head>
 
 <body class="main-body">
   <h1>BFSQS</h1>
   <h2>Barra de Favoritos, Só Que é Site!</h2>
-  <div class="menuHome"><br>Já possui uma conta? <br><br>
-    <button type="button" name="button" class="botao" onclick="location.href='login.html'">Login</button> <br><br><br>
-    Não? Então <br><br>
-     <button type="button" name="button" class="botao" onclick="location.href='registro.html'">Cadastre-se</button></div>
-  <p>Este projeto consiste em um gerenciador de url, proposto como atividade da discplina de Programação para Internet.</p>
+  <div class="menuHome" ><br>Já possui uma conta? <br><br><div id = "menuhome"></div>
 
+  </div>
+  <p>Este projeto consiste em um gerenciador de url, proposto como atividade da discplina de Programação para Internet.</p>
+  <div >
+    <h2>Urls publicas: </h2>
+    <div id="urls">
+
+    </div>
+  </div>
+
+<script>
+  function  confereLogado(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var str = xmlhttp.responseText
+        document.getElementById("menuhome").innerHTML = str;
+      }
+    };
+    var params = "" ;
+    xmlhttp.open("POST", "confirmaLogado.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("Content-length", params.length);
+    xmlhttp.setRequestHeader("Connection", "close");
+    xmlhttp.send(params);
+  }
+
+  function adicionaUrls(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var str = xmlhttp.responseText
+        document.getElementById("urls").innerHTML = str;
+      }
+    };
+    var params = "" ;
+    xmlhttp.open("POST", "pegaUrlsPublicas.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("Content-length", params.length);
+    xmlhttp.setRequestHeader("Connection", "close");
+    xmlhttp.send(params);
+}
+  setInterval(adicionaUrls,500);
+  setInterval(confereLogado,500);
+</script>
 </body>
